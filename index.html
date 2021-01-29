@@ -11,6 +11,7 @@
         rel="stylesheet">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
+    <!--<script src="script.js"></script>-->
 </head>
 
 <body>
@@ -31,7 +32,9 @@
 
         <div class="booking-content">
             <h1>Mega City Bus</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book.</p>
         </div>
 
 
@@ -41,18 +44,18 @@
             <div class="inputs">
                 <div class="input-group">
                     <label" for="">From</label>
-                    <input class="inp-style" type="text" name="" placeholder="Dhaka">
+                        <input class="inp-style" type="text" name="" placeholder="Dhaka">
                 </div>
                 <div class="input-group">
                     <label" for="">From</label>
-                    <input class="inp-style" type="text" name="" placeholder="Chittagone">
+                        <input class="inp-style" type="text" name="" placeholder="Chittagone">
                 </div>
             </div>
 
             <div class="inputs">
                 <div class="input-group">
                     <label" for="">Departure</label>
-                    <input class="inp-style" type="date" name="">
+                        <input class="inp-style" type="date" name="">
                 </div>
                 <div class="input-group">
                     <label for="">Return</label>
@@ -61,14 +64,15 @@
             </div>
             <div class="inputs">
                 <div class="input-group f-class">
-                <div>
-                    <label for="">First Class ($150)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <div>
+                        <label for="">First Class ($150)</label>
+                        <input id="fast-class-input" class="inp-style inp-width" type="number" name="" value="0">
+                    </div>
+                    <div class="plus-minus-btn">
+                        <p> <span id="increase-fast-class-input">+</span> <span id="decrease-fast-class-input">-</span>
+                        </p>
+                    </div>
                 </div>
-                <div class="plus-minus-btn">
-                    <p>+ -</p>
-                </div>
-            </div>
                 <div class="input-group f-class">
                     <div>
                         <label for="">Economy ($100)</label>
@@ -113,6 +117,15 @@
     </main>
 
     <!--Thank You-->
+    <script>
+        const fastClass = document.getElementById('increase-fast-class-input');
+        fastClass.addEventListener("click", function () {
+            const fastClassValue = document.getElementById('fast-class-input').value;
+            const fastClassInput = parseInt(fastClassValue);
+            const increaseFastClass = fastClassInput + 1;
+            document.getElementById('fast-class-input').value = increaseFastClass;
+        })
+    </script>
 </body>
 
 </html>
