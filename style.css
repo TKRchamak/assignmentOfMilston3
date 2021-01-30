@@ -122,3 +122,22 @@ nav ul li a:hover, a.active{
     display: flex;
     justify-content: space-between;
 }
+
+
+/**btn design**/
+
+
+#increase-input,
+#increase-fast-class-input{
+    font-size: 22px;
+    font-weight: bold;
+    padding: 0px 5px;
+
+}
+#decrease-input,
+#decrease-fast-class-input{
+    font-size: 22px;
+    font-weight: bold;
+    padding: 0px 8px;
+
+}
