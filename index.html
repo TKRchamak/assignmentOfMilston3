@@ -47,7 +47,7 @@
                         <input class="inp-style" type="text" name="" placeholder="Dhaka">
                 </div>
                 <div class="input-group">
-                    <label" for="">From</label>
+                    <label" for="">To</label>
                         <input class="inp-style" type="text" name="" placeholder="Chittagone">
                 </div>
             </div>
@@ -69,7 +69,8 @@
                         <input id="fast-class-input" class="inp-style inp-width" type="number" name="" value="0">
                     </div>
                     <div class="plus-minus-btn">
-                        <p><button class="btn" id="increase-fast-class-input">+</button><button class="btn" id="decrease-fast-class-input">-</button>
+                        <p><button class="btn" id="increase-fast-class-input">+</button><button class="btn"
+                                id="decrease-fast-class-input">-</button>
                         </p>
                     </div>
                 </div>
@@ -79,7 +80,8 @@
                         <input id="economy-class-input" class="inp-style inp-width" type="number" name="" value="0">
                     </div>
                     <div class="plus-minus-btn">
-                        <p><button class="btn" id="increase-input">+</button><button class="btn" id="decrease-input">-</button>
+                        <p><button class="btn" id="increase-input">+</button><button class="btn"
+                                id="decrease-input">-</button>
                         </p>
                     </div>
                 </div>
@@ -91,7 +93,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p>$500</p>
+                        <p>$ <span id="subtotal-amount">000</span></p>
                     </div>
                 </div>
 
@@ -100,7 +102,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p>$50</p>
+                        <p>$ <span id="vat-charge">00</span></p>
                     </div>
                 </div>
                 <hr>
@@ -109,7 +111,7 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p>$550</p>
+                        <p>$ <span id="total-amount">000</span> </p>
                     </div>
                 </div>
             </div>
@@ -119,47 +121,118 @@
 
     <!--Thank You-->
     <script>
+
+
         //fast-class-part
-        //increasePart
         const fastClassIncrease = document.getElementById('increase-fast-class-input');
         fastClassIncrease.addEventListener("click", function () {
-            const ticketValue = document.getElementById('fast-class-input').value;
-            const ticketInput = parseInt(ticketValue);
-            const finalTicketInput = ticketInput + 1;
-            document.getElementById('fast-class-input').value = finalTicketInput;
-            const ticketCost = finalTicketInput * 150;
-
-        })
-        //decreasePart
+            fastClassInputController(true);
+        });
         const fastClassDecrease = document.getElementById('decrease-fast-class-input');
         fastClassDecrease.addEventListener("click", function () {
+            fastClassInputController(false);
+        });
+        function fastClassInputController(increase) {
             const ticketValue = document.getElementById('fast-class-input').value;
             const ticketInput = parseInt(ticketValue);
-            const finalTicketInput = ticketInput - 1;
+            let finalTicketInput;
+            if (increase == true) {
+                finalTicketInput = ticketInput + 1;
+            }
+            if (increase == false && ticketInput > 0) {
+                finalTicketInput = ticketInput - 1;
+            }
             document.getElementById('fast-class-input').value = finalTicketInput;
-            const ticketCost = finalTicketInput * 150;
+            countAmount();
+        }
 
-        })
 
         //economy-class-part
-        //increasePart
         const economyClassIncrease = document.getElementById('increase-input');
         economyClassIncrease.addEventListener("click", function () {
-            const ticketValue = document.getElementById('economy-class-input').value;
-            const ticketInput = parseInt(ticketValue);
-            const finalTicketInput =  ticketInput + 1;
-            document.getElementById('economy-class-input').value = finalTicketInput;
-            const ticketCost = finalTicketInput * 100;
-        })
-        //decreasePart
+            economyClassInputController(true);
+        });
         const economyClassDecrease = document.getElementById('decrease-input');
         economyClassDecrease.addEventListener("click", function () {
+            economyClassInputController(false);
+        });
+        function economyClassInputController(increase) {
             const ticketValue = document.getElementById('economy-class-input').value;
             const ticketInput = parseInt(ticketValue);
-            const finalTicketInput = ticketInput - 1;
+            let finalTicketInput;
+            if (increase == true) {
+                finalTicketInput = ticketInput + 1;
+            }
+            if (increase == false && ticketInput > 0) {
+                finalTicketInput = ticketInput - 1;
+            }
             document.getElementById('economy-class-input').value = finalTicketInput;
-            const ticketCost = finalTicketInput * 100;
-        })
+            countAmount();
+        }
+
+        //accounting part
+
+        function countAmount(){
+            const fastTicketCount = document.getElementById('fast-class-input').value;
+            const fastTicketAmount = fastTicketCount * 150;
+            const economyTicketCount = document.getElementById('economy-class-input').value;
+            const economyTicketAmount = economyTicketCount * 150;
+            const subtotal = fastTicketAmount + economyTicketAmount;
+            document.getElementById('subtotal-amount').innerText = subtotal;
+            const vat = (Math.round(subtotal * 0.1));
+            document.getElementById("vat-charge").innerText = vat;
+            const totalAmount = subtotal + vat;
+            document.getElementById("total-amount").innerText = totalAmount;
+
+        }
+
+
+
+
+
+
+        // //fast-class-part
+        // //increasePart
+        // const fastClassIncrease = document.getElementById('increase-fast-class-input');
+        // fastClassIncrease.addEventListener("click", function () {
+        //     const ticketValue = document.getElementById('fast-class-input').value;
+        //     const ticketInput = parseInt(ticketValue);
+        //     const finalTicketInput = ticketInput + 1;
+        //     document.getElementById('fast-class-input').value = finalTicketInput;
+        //     const ticketCost = finalTicketInput * 150;
+
+        // })
+        // //decreasePart
+        // const fastClassDecrease = document.getElementById('decrease-fast-class-input');
+        // fastClassDecrease.addEventListener("click", function () {
+        //     const ticketValue = document.getElementById('fast-class-input').value;
+        //     const ticketInput = parseInt(ticketValue);
+        //     const finalTicketInput = ticketInput - 1;
+        //     document.getElementById('fast-class-input').value = finalTicketInput;
+        //     const ticketCost = finalTicketInput * 150;
+
+        // })
+
+
+        // //economy-class-part
+        // //increasePart
+        // const economyClassIncrease = document.getElementById('increase-input');
+        // economyClassIncrease.addEventListener("click", function () {
+        //     const ticketValue = document.getElementById('economy-class-input').value;
+        //     const ticketInput = parseInt(ticketValue);
+        //     const finalTicketInput =  ticketInput + 1;
+        //     document.getElementById('economy-class-input').value = finalTicketInput;
+        //     const ticketCost = finalTicketInput * 100;
+        // })
+        // //decreasePart
+        // const economyClassDecrease = document.getElementById('decrease-input');
+        // economyClassDecrease.addEventListener("click", function () {
+        //     const ticketValue = document.getElementById('economy-class-input').value;
+        //     const ticketInput = parseInt(ticketValue);
+        //     const finalTicketInput = ticketInput - 1;
+        //     document.getElementById('economy-class-input').value = finalTicketInput;
+        //     const ticketCost = finalTicketInput * 100;
+        // })
 
 
     </script>
