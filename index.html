@@ -88,8 +88,8 @@
                         <input id="economy-class-input" class="inp-style inp-width" type="number" name="" value="0">
                     </div>
                     <div class="plus-minus-btn">
-                        <p><button class="btn" id="increase-input">+</button><button class="btn"
-                                id="decrease-input">-</button>
+                        <p><button class="btn" id="increase-economy-class-input">+</button><button class="btn"
+                                id="decrease-economy-class-input">-</button>
                         </p>
                     </div>
                 </div>
@@ -182,42 +182,27 @@
     <!--Thank You-->
     <script>
 
-
         //fast-class-part
         const fastClassIncrease = document.getElementById('increase-fast-class-input');
         fastClassIncrease.addEventListener("click", function () {
-            fastClassInputController(true);
+            getInputValue("fast-class-input", true);
         });
         const fastClassDecrease = document.getElementById('decrease-fast-class-input');
         fastClassDecrease.addEventListener("click", function () {
-            fastClassInputController(false);
+            getInputValue("fast-class-input", false);
         });
-        function fastClassInputController(increase) {
-            const ticketValue = document.getElementById('fast-class-input').value;
-            const ticketInput = parseInt(ticketValue);
-            let finalTicketInput = ticketInput;
-            if (increase == true) {
-                finalTicketInput = ticketInput + 1;
-            }
-            if (increase == false && ticketInput > 0) {
-                finalTicketInput = ticketInput - 1;
-            }
-            document.getElementById('fast-class-input').value = finalTicketInput;
-            countAmount();
-        }
-
 
         //economy-class-part
-        const economyClassIncrease = document.getElementById('increase-input');
+        const economyClassIncrease = document.getElementById('increase-economy-class-input');
         economyClassIncrease.addEventListener("click", function () {
-            economyClassInputController(true);
+            getInputValue("economy-class-input", true);
         });
-        const economyClassDecrease = document.getElementById('decrease-input');
+        const economyClassDecrease = document.getElementById('decrease-economy-class-input');
         economyClassDecrease.addEventListener("click", function () {
-            economyClassInputController(false);
+            getInputValue("economy-class-input", false);
         });
-        function economyClassInputController(increase) {
-            const ticketValue = document.getElementById('economy-class-input').value;
+        function getInputValue(id, increase) {
+            const ticketValue = document.getElementById(id).value;
             const ticketInput = parseInt(ticketValue);
             let finalTicketInput = ticketInput;
             if (increase == true) {
@@ -226,12 +211,41 @@
             if (increase == false && ticketInput > 0) {
                 finalTicketInput = ticketInput - 1;
             }
-            document.getElementById('economy-class-input').value = finalTicketInput;
+            document.getElementById(id).value = finalTicketInput;
             countAmount();
         }
 
-        //accounting part
 
+        // function getInputValue(increase) {
+        //     const ticketValue = document.getElementById('fast-class-input').value;
+        //     const ticketInput = parseInt(ticketValue);
+        //     let finalTicketInput = ticketInput;
+        //     if (increase == true) {
+        //         finalTicketInput = ticketInput + 1;
+        //     }
+        //     if (increase == false && ticketInput > 0) {
+        //         finalTicketInput = ticketInput - 1;
+        //     }
+        //     document.getElementById('fast-class-input').value = finalTicketInput;
+        //     countAmount();
+        // }
+
+        // function getInputValue(increase) {
+        //     const ticketValue = document.getElementById('economy-class-input').value;
+        //     const ticketInput = parseInt(ticketValue);
+        //     let finalTicketInput = ticketInput;
+        //     if (increase == true) {
+        //         finalTicketInput = ticketInput + 1;
+        //     }
+        //     if (increase == false && ticketInput > 0) {
+        //         finalTicketInput = ticketInput - 1;
+        //     }
+        //     document.getElementById('economy-class-input').value = finalTicketInput;
+        //     countAmount();
+        // }
+
+
+        //accounting part
         function countAmount() {
             const fastTicketCount = document.getElementById('fast-class-input').value;
             const fastTicketAmount = fastTicketCount * 150;
@@ -244,17 +258,11 @@
             const totalAmount = subtotal + vat;
             document.getElementById("total-amount").innerText = totalAmount;
         }
-
-
         document.getElementById("popup-page").addEventListener("click", function () {
             document.getElementById('modal-fast-class-ticket').innerText = document.getElementById('fast-class-input').value;
             document.getElementById('modal-economy-class-ticket').innerText = document.getElementById('economy-class-input').value;
             document.getElementById('modal-total-amount').innerText = document.getElementById("total-amount").innerText;
         })
-
-
-
-
 
 
         // //fast-class-part
@@ -276,9 +284,7 @@
         //     const finalTicketInput = ticketInput - 1;
         //     document.getElementById('fast-class-input').value = finalTicketInput;
         //     const ticketCost = finalTicketInput * 150;
-
         // })
-
 
         // //economy-class-part
         // //increasePart
@@ -299,8 +305,6 @@
         //     document.getElementById('economy-class-input').value = finalTicketInput;
         //     const ticketCost = finalTicketInput * 100;
         // })
-
-
     </script>
 </body>
 

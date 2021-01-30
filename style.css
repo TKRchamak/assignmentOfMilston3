@@ -128,14 +128,14 @@ nav ul li a:hover, a.active{
 /**btn design**/
 
 
-#increase-input,
+#increase-economy-class-input,
 #increase-fast-class-input{
     font-size: 22px;
     font-weight: bold;
     padding: 0px 5px;
 
 }
-#decrease-input,
+#decrease-economy-class-input,
 #decrease-fast-class-input{
     font-size: 22px;
     font-weight: bold;
